@@ -9,7 +9,6 @@ dependencies:
   - scipy
   - pytorch=1.12
   - torchvision=0.13.0
-  - torchaudio=0.12.0
   - shapely
   - ipykernel
   - wandb
