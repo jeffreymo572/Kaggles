@@ -5,7 +5,6 @@ dependencies:
   - python=3.8
   - pip
   - cudatoolkit=10.2
-  - numpy
   - scipy
   - pytorch=1.12
   - torchvision=0.13.0
@@ -14,6 +13,7 @@ dependencies:
   - wandb
   - matplotlib
   - seaborn
+  - scikit-learn
   - pip:
     - 'mujoco-py<2.2,>=2.1'
     - torchsde
