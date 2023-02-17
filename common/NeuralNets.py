@@ -63,7 +63,7 @@ class Mlp(nn.Module):
         layer_dims (List[int]): Dimensions of hidden layers
         activation (str): type of activations. Not applying to the last layer 
     """
-    def __init__(self, input_dim, output_dim, layer_dims=[], activation='tanh'):
+    def __init__(self, input_dim, output_dim, layer_dims=[], activation='relu'):
         super(Mlp, self).__init__()
 
         self.layers = []
@@ -100,8 +100,16 @@ class Mlp(nn.Module):
         # Generate predictions
         out = self(inputs)          
         # Calcuate loss
-        loss = F.binary_cross_entropy(out, targets)                
+        loss = F.mse_loss(out, targets)                
         return loss
+
+    def validation_step(self, batch):
+        inputs, targets = batch
+        # Generate predictions
+        out = self(inputs)
+        # Calculate loss
+        loss = F.l1_loss(out, targets)
+        return {'val_loss': loss.detach()}
 
     def validation_epoch_end(self, outputs):
         r"""

@@ -18,14 +18,14 @@ train_ds, val_ds = create_dataset(df, 'booking_status')
 # Cleaning data
 
 # Model
-"""
-net = Mlp(input_dim = 1, output_dim = 1, layer_dims=[32, 16, 22])
+
+net = Mlp(input_dim = 18, output_dim = 1, layer_dims=[32, 16, 22])
 optimizer = torch.optim.Adam
 loss_function = torch.nn.MSELoss()
+
 
 # Training
 epochs = 1000
 history = fit(epochs, net, train_ds, val_ds, opt = optimizer)
 val_loss = evaluate(net, val_ds)
 val_loss_list = [vl['val_loss'] for vl in val_loss]
-"""
