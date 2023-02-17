@@ -1,13 +1,24 @@
+import numpy as np
+from statistics import mean
+
 import torch
 import torch.nn as nn
-from torch.utils.data import TensorDataset, random_split
+from torch.utils.data import TensorDataset, random_split, DataLoader
 
-# Cuda for GPU 
-if torch.cuda.is_available(): 
- dev = "cuda:0" 
-else: 
- dev = "cpu" 
-device = torch.device(dev) 
+# Wandb for tracking
+import wandb
+wandb.init(
+    project="KaggleS3E7",
+    
+    # track hyperparameters and run metadata
+    config={
+    "learning_rate": 1e-3,
+    "architecture": "MLP[18,32,16,16,1]",
+    "dataset": "Kaggle S3E7",
+    "epochs": 1000,
+    "data cleaning": "None"
+    }
+)
 
 def dataframe_to_arrays(dataframe, target_col_name):
     f"""
@@ -21,6 +32,7 @@ def dataframe_to_arrays(dataframe, target_col_name):
         inputs_array(np.array[N,M-1]): Numpy array of input data
         target_array(np.array[N,1]): Numpy array of target data
     """
+    # TODO: Split target array with col name, current only uses last column
     # Make a copy of the original dataframe
     dataframe1 = dataframe.copy(deep=True)
     # Extract input & outupts as numpy arrays
@@ -40,8 +52,8 @@ def create_dataset(df, target_col_name, val_percent = 0.1):
         val_percent(float): Float representing percent of validation split
 
     returns:
-        train_ds: Training dataset
-        val_ds: Validation dataset 
+        train_ds((inputs[i], targets[i])): Training dataset
+        val_ds((inputs[i], targets[i])): Validation dataset 
     """
     num_rows = df.shape[0]
 
@@ -49,31 +61,52 @@ def create_dataset(df, target_col_name, val_percent = 0.1):
     inputs_array, target_array = dataframe_to_arrays(df, target_col_name)
     inputs = torch.from_numpy(inputs_array).type(torch.float32) # torch.Tensor([N,M-1])
     targets = torch.from_numpy(target_array).type(torch.float32) # torch.Tensor([N,1])
-    dataset = TensorDataset(inputs, targets)
+    dataset = TensorDataset(inputs, targets) # tuple(inputs[i], targets[i])
+    loader = DataLoader(dataset, pin_memory=True, num_workers=4, shuffle=True)
 
+    print(len(loader))
+    """
     # Creating validation dataset
     val_size = int(num_rows * val_percent)
     train_size = num_rows - val_size
-    train_ds, val_ds = random_split(dataset, [train_size, val_size])
-
+    train_ds, val_ds = random_split(loader, [train_size, val_size])
+    
     return train_ds, val_ds
+    """
+    return None, None
 
-def evaluate(model, val_loader):
-    outputs = [model.validation_step(batch) for batch in val_loader]
+def evaluate(model, val_loader, device):
+    outputs = []
+    for batch in val_loader:
+        x, y = batch
+        x, y = x.to(device), y.to(device)
+        outputs.append(model.validation_step((x,y)))
     return model.validation_epoch_end(outputs)
 
-def fit(epochs, model, train_loader, val_loader, opt, lr=1e-3):
+def fit(epochs, model, train_loader, val_loader, device, opt, len_train_set,
+        lr=1e-3):
+    r"""
+    Training loop for model fitting
+    """
     history = []
+    losses = []
     optimizer = opt(model.parameters(), lr)
     for epoch in range(epochs):
         # Training Phase 
         for batch in train_loader:
             loss = model.training_step(batch)
+            losses.append(loss.cpu().detach().numpy())
             loss.backward()
             optimizer.step()
             optimizer.zero_grad()
         # Validation phase
-        result = evaluate(model, val_loader)
-        model.epoch_end(epoch, result, epochs, 200)
-        history.append(result)
+        val_loss, val_accuracy = evaluate(model, val_loader, device=device)
+        model.epoch_end(epoch, val_loss, epochs, 200)
+        history.append(val_loss)
+
+        # Tracking with wandb
+        wandb.log({"Evaluation result": val_loss, "Loss": np.mean(losses),
+                   "Evaluation Accuracy": val_accuracy/len(batch)})
+        losses = []
+    
     return history

@@ -5,6 +5,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import math
+from typing import Union
 
 # Factorised NoisyLinear layer with bias
 class NoisyLinear(nn.Module):
@@ -63,9 +64,10 @@ class Mlp(nn.Module):
         layer_dims (List[int]): Dimensions of hidden layers
         activation (str): type of activations. Not applying to the last layer 
     """
-    def __init__(self, input_dim, output_dim, layer_dims=[], activation='relu'):
+    def __init__(self, input_dim, output_dim, device, layer_dims=[], activation='relu'):
         super(Mlp, self).__init__()
 
+        self.device = device
         self.layers = []
         self.input_dim = input_dim
         self.output_dim = output_dim
@@ -74,15 +76,11 @@ class Mlp(nn.Module):
             self.layers.append(nn.Linear(input_dim, layer_dims[0]))
 
             for i in range(len(layer_dims)-1):
-                if activation == 'tanh':
-                    self.layers.append(nn.Tanh())
-                elif activation == 'relu':
+                if activation == 'relu':
                     self.layers.append(nn.ReLU())
                 self.layers.append(nn.Linear(layer_dims[i], layer_dims[i+1]))
 
-            if activation == 'tanh':
-                self.layers.append(nn.Tanh())
-            elif activation == 'relu':
+            if activation == 'relu':
                     self.layers.append(nn.ReLU())
 
             self.layers.append(nn.Linear(layer_dims[-1], output_dim))
@@ -95,34 +93,69 @@ class Mlp(nn.Module):
     def forward(self, x):
         return self.net(x)
 
-    def training_step(self, batch):
-        inputs, targets = batch 
-        # Generate predictions
-        out = self(inputs)          
-        # Calcuate loss
-        loss = F.mse_loss(out, targets)                
-        return loss
+    def training_step(self, batch: tuple) -> torch.Tensor:
+        r"""
+        Training step
 
-    def validation_step(self, batch):
+        args:
+          batch((inputs, targets)): Tuple of N (input, target) pairs
+        
+        return:
+          loss(Tensor): Loss as a result of loss function (MSE)
+        """
+        inputs, targets = batch
+        inputs = inputs.to(self.device)
+        targets = targets.to(self.device)
+        # Generate predictions
+        out = self(inputs).to(self.device)
+        # Calcuate loss
+        loss = F.mse_loss(out, targets)   
+
+        return loss
+    def validation_step(self, batch: tuple)-> dict:
+        r"""
+        Model prediction for validation batch
+
+        args:
+          batch((inputs, target)): (Inputs, target) tuple
+
+        returns:
+          results(dict): Dictionary of the following items
+            * val_loss(float): Validation loss
+            * accuracy(int): If prediction was correct (1) or not (0)
+        """
         inputs, targets = batch
         # Generate predictions
         out = self(inputs)
         # Calculate loss
-        loss = F.l1_loss(out, targets)
-        return {'val_loss': loss.detach()}
+        loss = F.mse_loss(out, targets) # Similar to accuracy
+        # Generate accuracy
+        correct = 1 if (targets-out) >= 0.8 else 0 # >=80% Confidence
 
-    def validation_epoch_end(self, outputs):
+        return {'val_loss': loss.detach(), 'accuracy': correct}
+
+    def validation_epoch_end(self, outputs:dict)->dict:
         r"""
-        Used for validation batch
+        Returns mean and accuracy of validation batch after all validation steps
+
+        args:
+          outputs(dict): Dictionary of outputs from all validation steps with at least
+                         the following items:
+          * val_loss(float): Validation loss for each validation step
+          * accuracy(int): If prediction was correct (1) or not (0) for each validation step
         """
         batch_losses = [x['val_loss'] for x in outputs]
-        epoch_loss = torch.stack(batch_losses).mean()   
-        return {'val_loss': epoch_loss.item()}
+        batch_accuracy = [a['accuracy'] for a in outputs]
+
+        epoch_loss = torch.stack(batch_losses).mean()
+        accuracy = torch.stack(batch_accuracy).mean()
+
+        return {'val_loss': epoch_loss.item(), 'accuracy': accuracy.item()}
     
-    def epoch_end(self, epoch, result, num_epochs, n):
+    def epoch_end(self, epoch:int, result:dict, num_epochs:int, n:int):
         r"""
-        Prints every n epoch
+        Prints every n epoch given results
         """
         # Print result every 20th epoch
         if (epoch+1) % n == 0 or epoch == num_epochs-1:
-            print("Epoch [{}], val_loss: {:.4f}".format(epoch+1, result['val_loss']))
+            print(f"Epoch [{epoch+1}], val_loss: {result['val_loss']:.4f}")

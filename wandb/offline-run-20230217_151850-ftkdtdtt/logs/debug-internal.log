@@ -1,0 +1,147 @@
+2023-02-17 15:18:50,072 INFO    StreamThr :31088 [internal.py:wandb_internal():87] W&B internal server running at pid: 31088, started at: 2023-02-17 15:18:50.072036
+2023-02-17 15:18:50,073 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status
+2023-02-17 15:18:50,074 INFO    WriterThread:31088 [datastore.py:open_for_write():85] open: /home/jeffreymo572/Kaggles/wandb/offline-run-20230217_151850-ftkdtdtt/run-ftkdtdtt.wandb
+2023-02-17 15:18:50,081 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: run_start
+2023-02-17 15:18:50,126 DEBUG   HandlerThread:31088 [system_info.py:__init__():31] System info init
+2023-02-17 15:18:50,126 DEBUG   HandlerThread:31088 [system_info.py:__init__():46] System info init done
+2023-02-17 15:18:50,126 INFO    HandlerThread:31088 [system_monitor.py:start():151] Starting system monitor
+2023-02-17 15:18:50,127 INFO    SystemMonitor:31088 [system_monitor.py:_start():116] Starting system asset monitoring threads
+2023-02-17 15:18:50,127 INFO    HandlerThread:31088 [system_monitor.py:probe():172] Collecting system info
+2023-02-17 15:18:50,127 INFO    SystemMonitor:31088 [interfaces.py:start():168] Started cpu
+2023-02-17 15:18:50,128 INFO    SystemMonitor:31088 [interfaces.py:start():168] Started disk
+2023-02-17 15:18:50,128 INFO    SystemMonitor:31088 [interfaces.py:start():168] Started gpu
+2023-02-17 15:18:50,128 INFO    SystemMonitor:31088 [interfaces.py:start():168] Started memory
+2023-02-17 15:18:50,129 INFO    SystemMonitor:31088 [interfaces.py:start():168] Started network
+2023-02-17 15:18:50,156 DEBUG   HandlerThread:31088 [system_info.py:probe():195] Probing system
+2023-02-17 15:18:50,211 DEBUG   HandlerThread:31088 [system_info.py:_probe_git():180] Probing git
+2023-02-17 15:18:50,217 DEBUG   HandlerThread:31088 [system_info.py:_probe_git():188] Probing git done
+2023-02-17 15:18:50,218 DEBUG   HandlerThread:31088 [system_info.py:probe():241] Probing system done
+2023-02-17 15:18:50,218 DEBUG   HandlerThread:31088 [system_monitor.py:probe():181] {'os': 'Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-glibc2.17', 'python': '3.8.16', 'heartbeatAt': '2023-02-17T21:18:50.156254', 'startedAt': '2023-02-17T21:18:50.067293', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': 'main.py', 'codePath': 'main.py', 'git': {'remote': 'https://github.com/jeffreymo572/Kaggles.git', 'commit': '8b95658ced7961bb4c3b4bbc218aa751de985dfd'}, 'email': 'jeffreymo572@gmail.com', 'root': '/home/jeffreymo572/Kaggles', 'host': 'DESKTOP-NUCQ9A9', 'username': 'jeffreymo572', 'executable': '/home/jeffreymo572/anaconda3/envs/Kaggles/bin/python', 'cpu_count': 8, 'cpu_count_logical': 16, 'cpu_freq': {'current': 3600.0129999999995, 'min': 0.0, 'max': 0.0}, 'cpu_freq_per_core': [{'current': 3600.013, 'min': 0.0, 'max': 0.0}, {'current': 3600.013, 'min': 0.0, 'max': 0.0}, {'current': 3600.013, 'min': 0.0, 'max': 0.0}, {'current': 3600.013, 'min': 0.0, 'max': 0.0}, {'current': 3600.013, 'min': 0.0, 'max': 0.0}, {'current': 3600.013, 'min': 0.0, 'max': 0.0}, {'current': 3600.013, 'min': 0.0, 'max': 0.0}, {'current': 3600.013, 'min': 0.0, 'max': 0.0}, {'current': 3600.013, 'min': 0.0, 'max': 0.0}, {'current': 3600.013, 'min': 0.0, 'max': 0.0}, {'current': 3600.013, 'min': 0.0, 'max': 0.0}, {'current': 3600.013, 'min': 0.0, 'max': 0.0}, {'current': 3600.013, 'min': 0.0, 'max': 0.0}, {'current': 3600.013, 'min': 0.0, 'max': 0.0}, {'current': 3600.013, 'min': 0.0, 'max': 0.0}, {'current': 3600.013, 'min': 0.0, 'max': 0.0}], 'disk': {'total': 250.98248672485352, 'used': 144.2148208618164}, 'gpu': 'NVIDIA GeForce RTX 2080 Ti', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 2080 Ti', 'memory_total': 11811160064}], 'memory': {'total': 7.737171173095703}}
+2023-02-17 15:18:50,218 INFO    HandlerThread:31088 [system_monitor.py:probe():182] Finished collecting system info
+2023-02-17 15:18:50,218 INFO    HandlerThread:31088 [system_monitor.py:probe():185] Publishing system info
+2023-02-17 15:18:50,218 DEBUG   HandlerThread:31088 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-02-17 15:18:50,218 DEBUG   HandlerThread:31088 [system_info.py:_save_pip():67] Saving pip packages done
+2023-02-17 15:18:50,218 DEBUG   HandlerThread:31088 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2023-02-17 15:18:56,626 DEBUG   HandlerThread:31088 [system_info.py:_save_conda():86] Saving conda packages done
+2023-02-17 15:18:56,627 INFO    HandlerThread:31088 [system_monitor.py:probe():187] Finished publishing system info
+2023-02-17 15:18:56,630 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:18:56,631 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: keepalive
+2023-02-17 15:18:56,631 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:19:00,632 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:19:00,632 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:19:05,633 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:19:05,633 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:19:10,634 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:19:10,634 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:19:15,635 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:19:15,636 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:19:20,636 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:19:20,637 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:19:25,637 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:19:25,638 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:19:30,639 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:19:30,639 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:19:35,640 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:19:35,640 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:19:40,641 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:19:40,641 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:19:45,642 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:19:45,643 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:19:50,129 DEBUG   SystemMonitor:31088 [system_monitor.py:_start():130] Starting system metrics aggregation loop
+2023-02-17 15:19:50,643 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:19:50,644 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:19:55,645 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:19:55,645 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:20:00,646 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:20:00,646 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:20:05,647 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:20:05,647 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:20:10,648 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:20:10,648 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:20:15,649 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:20:15,649 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:20:20,650 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:20:20,651 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:20:25,651 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:20:25,652 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:20:30,653 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:20:30,653 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:20:35,654 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:20:35,654 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:20:40,655 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:20:40,655 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:20:45,656 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:20:45,656 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:20:50,657 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:20:50,657 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:20:55,658 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:20:55,658 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:21:00,659 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:21:00,659 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:21:05,660 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:21:05,661 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:21:10,661 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:21:10,662 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:21:15,663 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:21:15,663 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:21:20,664 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:21:20,664 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:21:25,665 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:21:25,665 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:21:30,666 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:21:30,666 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:21:35,667 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:21:35,667 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:21:40,668 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:21:40,669 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:21:45,669 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:21:45,670 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:21:50,671 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:21:50,671 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:21:55,672 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:21:55,672 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:22:00,673 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:22:00,673 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:22:05,674 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:22:05,674 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:22:10,675 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:22:10,675 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:22:15,676 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:22:15,676 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:22:20,677 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:22:20,677 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:22:25,678 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:22:25,678 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:22:30,679 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:22:30,680 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:22:35,680 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:22:35,681 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:22:40,682 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:22:40,682 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:22:45,683 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:22:45,683 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:22:50,684 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:22:50,684 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:22:55,685 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:22:55,685 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:23:00,686 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:23:00,686 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:23:05,687 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:23:05,688 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:23:10,689 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:23:10,689 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:23:15,690 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:23:15,690 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:23:20,691 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:23:20,691 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:23:25,692 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:23:25,693 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:23:30,694 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:23:30,694 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:23:35,695 DEBUG   HandlerThread:31088 [handler.py:handle_request():144] handle_request: status_report
+2023-02-17 15:23:35,695 DEBUG   SenderThread:31088 [sender.py:send_request():363] send_request: status_report
+2023-02-17 15:23:36,187 ERROR   memory    :31088 [interfaces.py:monitor():129] Failed to sample metric: process no longer exists (pid=31039)
+2023-02-17 15:23:36,187 ERROR   memory    :31088 [interfaces.py:monitor():129] Failed to sample metric: process no longer exists (pid=31039)
+2023-02-17 15:23:36,191 ERROR   cpu       :31088 [interfaces.py:monitor():129] Failed to sample metric: process no longer exists (pid=31039)
+2023-02-17 15:23:36,191 ERROR   cpu       :31088 [interfaces.py:monitor():129] Failed to sample metric: process no longer exists (pid=31039)
+2023-02-17 15:23:37,138 INFO    MainThread:31088 [internal.py:handle_exit():77] Internal process exited
