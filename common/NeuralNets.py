@@ -139,10 +139,13 @@ class Mlp(nn.Module):
         Returns mean and accuracy of validation batch after all validation steps
 
         args:
+          outputs(dict): Data from all validation phase prediction
+        returns:
           outputs(dict): Dictionary of outputs from all validation steps with at least
                          the following items:
-          * val_loss(float): Validation loss for each validation step
-          * accuracy(int): If prediction was correct (1) or not (0) for each validation step
+          * val_loss(float): Mean validation loss of all validation steps
+          * accuracy(int): Mean accuracy of all validation steps (see validation_step() 
+                          for accuracy calc)
         """
         batch_losses = [x['val_loss'] for x in outputs]
         batch_accuracy = [a['accuracy'] for a in outputs]

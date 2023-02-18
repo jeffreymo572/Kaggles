@@ -1,10 +1,11 @@
 import numpy as np
-from statistics import mean
+import pandas as pd
 
 import torch
 import torch.nn as nn
 from torch.utils.data import TensorDataset, random_split, DataLoader
 
+from common.NeuralNets import Mlp
 # Wandb for tracking
 import wandb
 wandb.init(
@@ -20,7 +21,7 @@ wandb.init(
     }
 )
 
-def dataframe_to_arrays(dataframe, target_col_name):
+def dataframe_to_arrays(dataframe: pd.DataFrame, target_col_name: str):
     f"""
     Splits Pandas Dataframe into training and testing np.array sets. Only works for 
     numerical data
@@ -40,7 +41,7 @@ def dataframe_to_arrays(dataframe, target_col_name):
     targets_array = dataframe1.iloc[:,-1:].to_numpy() # [N,1]
     return inputs_array, targets_array
 
-def create_dataset(df, target_col_name, val_percent = 0.1):
+def create_dataset(df:pd.DataFrame, target_col_name:str, val_percent:int = 0.1) -> torch.Tensor:
     r"""
     Creates a dataset that is split into inputs and targets then split into
     training and validation set
@@ -63,7 +64,8 @@ def create_dataset(df, target_col_name, val_percent = 0.1):
     targets = torch.from_numpy(target_array).type(torch.float32) # torch.Tensor([N,1])
     dataset = TensorDataset(inputs, targets) # tuple(inputs[i], targets[i])
     loader = DataLoader(dataset, pin_memory=True, num_workers=4, shuffle=True)
-
+    
+    # TODO: Creating dataset using Dataloader instead of TensorDataset
     print(len(loader))
     """
     # Creating validation dataset
@@ -75,7 +77,21 @@ def create_dataset(df, target_col_name, val_percent = 0.1):
     """
     return None, None
 
-def evaluate(model, val_loader, device):
+def evaluate(model: Mlp, val_loader: torch.Tensor, device:str):
+    r"""
+    Evaluation of model using validation set
+
+    args:
+        model(Mlp): Trained model
+        val_load(torch.Tensor): Validation set with N tuples of (input,target) pairs
+        device(str): Device to use, pref 'cuda:0' for GPU
+
+    returns:
+        outputs(dict): Dictionary of outputs from all validation steps with at least
+                        the following items:
+        * val_loss(float): Validation loss for each validation step
+        * accuracy(int): If prediction was correct (1) or not (0) for each validation step
+    """
     outputs = []
     for batch in val_loader:
         x, y = batch
@@ -83,8 +99,8 @@ def evaluate(model, val_loader, device):
         outputs.append(model.validation_step((x,y)))
     return model.validation_epoch_end(outputs)
 
-def fit(epochs, model, train_loader, val_loader, device, opt, len_train_set,
-        lr=1e-3):
+def fit(epochs:int, model: Mlp, train_loader: torch.Tensor, val_loader: torch.Tensor, 
+        device:str, opt: torch.optim, lr:float=1e-3):
     r"""
     Training loop for model fitting
     """
@@ -105,6 +121,7 @@ def fit(epochs, model, train_loader, val_loader, device, opt, len_train_set,
         history.append(val_loss)
 
         # Tracking with wandb
+        # TODO: Test evaluation accuracy on Wandb
         wandb.log({"Evaluation result": val_loss, "Loss": np.mean(losses),
                    "Evaluation Accuracy": val_accuracy/len(batch)})
         losses = []
