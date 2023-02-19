@@ -1,11 +1,10 @@
-import torch
-import torch.nn as nn
+import numpy as np
+import math
+from typing import Union
 
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import math
-from typing import Union
 
 # Factorised NoisyLinear layer with bias
 class NoisyLinear(nn.Module):
@@ -64,7 +63,7 @@ class Mlp(nn.Module):
         layer_dims (List[int]): Dimensions of hidden layers
         activation (str): type of activations. Not applying to the last layer 
     """
-    def __init__(self, input_dim, output_dim, device, layer_dims=[], activation='relu'):
+    def __init__(self, input_dim, output_dim, device, layer_dims=[], activation='Sigmoid'):
         super(Mlp, self).__init__()
 
         self.device = device
@@ -77,11 +76,15 @@ class Mlp(nn.Module):
 
             for i in range(len(layer_dims)-1):
                 if activation == 'relu':
-                    self.layers.append(nn.ReLU())
+                  self.layers.append(nn.ReLU())
+                elif activation == 'sigmoid':
+                  self.layers.append(nn.Sigmoid())
                 self.layers.append(nn.Linear(layer_dims[i], layer_dims[i+1]))
 
             if activation == 'relu':
-                    self.layers.append(nn.ReLU())
+              self.layers.append(nn.ReLU())
+            if activation == 'sigmoid':
+              self.layers.append(nn.Sigmoid())
 
             self.layers.append(nn.Linear(layer_dims[-1], output_dim))
 
@@ -109,9 +112,10 @@ class Mlp(nn.Module):
         # Generate predictions
         out = self(inputs).to(self.device)
         # Calcuate loss
-        loss = F.mse_loss(out, targets)   
+        loss = F.mse_loss(out, targets)
+        accuracy = 1-torch.absolute(torch.Tensor(out-targets))
 
-        return loss
+        return loss, accuracy
     def validation_step(self, batch: tuple)-> dict:
         r"""
         Model prediction for validation batch
@@ -130,11 +134,11 @@ class Mlp(nn.Module):
         # Calculate loss
         loss = F.mse_loss(out, targets) # Similar to accuracy
         # Generate accuracy
-        correct = 1 if (targets-out) >= 0.8 else 0 # >=80% Confidence
+        error = torch.absolute(targets-out) # <20% margin of error
 
-        return {'val_loss': loss.detach(), 'accuracy': correct}
+        return {'val_loss': loss.detach(), 'accuracy': 1-error}
 
-    def validation_epoch_end(self, outputs:dict)->dict:
+    def validation_epoch_end(self, outputs:dict)->float:
         r"""
         Returns mean and accuracy of validation batch after all validation steps
 
@@ -151,14 +155,14 @@ class Mlp(nn.Module):
         batch_accuracy = [a['accuracy'] for a in outputs]
 
         epoch_loss = torch.stack(batch_losses).mean()
-        accuracy = torch.stack(batch_accuracy).mean()
+        accuracy = torch.mean(torch.Tensor(batch_accuracy))
 
-        return {'val_loss': epoch_loss.item(), 'accuracy': accuracy.item()}
+        return epoch_loss.item(), accuracy.item()
     
-    def epoch_end(self, epoch:int, result:dict, num_epochs:int, n:int):
+    def epoch_end(self, epoch:int, val_loss:float, num_epochs:int, n:int):
         r"""
         Prints every n epoch given results
         """
         # Print result every 20th epoch
         if (epoch+1) % n == 0 or epoch == num_epochs-1:
-            print(f"Epoch [{epoch+1}], val_loss: {result['val_loss']:.4f}")
+            print(f"Epoch [{epoch+1}], val_loss: {val_loss:.4f}")

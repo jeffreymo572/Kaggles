@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+from sklearn.model_selection import train_test_split
 
 import torch
 import torch.nn as nn
@@ -13,11 +14,12 @@ wandb.init(
     
     # track hyperparameters and run metadata
     config={
-    "learning_rate": 1e-3,
-    "architecture": "MLP[18,32,16,16,1]",
+    "learning_rate": 0.001,
+    "architecture": "MLP[18,128,16,64,1]",
     "dataset": "Kaggle S3E7",
     "epochs": 1000,
-    "data cleaning": "None"
+    "data cleaning": "None", 
+    "optimizer": "Adam"
     }
 )
 
@@ -62,20 +64,23 @@ def create_dataset(df:pd.DataFrame, target_col_name:str, val_percent:int = 0.1) 
     inputs_array, target_array = dataframe_to_arrays(df, target_col_name)
     inputs = torch.from_numpy(inputs_array).type(torch.float32) # torch.Tensor([N,M-1])
     targets = torch.from_numpy(target_array).type(torch.float32) # torch.Tensor([N,1])
-    dataset = TensorDataset(inputs, targets) # tuple(inputs[i], targets[i])
-    loader = DataLoader(dataset, pin_memory=True, num_workers=4, shuffle=True)
+
+    # Creating train, test, validation sets
+    x_train, x_test, y_train, y_test = train_test_split(inputs, targets, test_size=0.2, random_state=1)
+    x_train, x_val, y_train, y_val = train_test_split(x_train, y_train, test_size=0.25, random_state=1)
+
+    # Loading datasets
+    train_dataset = TensorDataset(x_train, y_train) # tuple(inputs[i], targets[i])
+    train_loader = DataLoader(train_dataset, pin_memory=True, num_workers=4)
     
-    # TODO: Creating dataset using Dataloader instead of TensorDataset
-    print(len(loader))
-    """
-    # Creating validation dataset
-    val_size = int(num_rows * val_percent)
-    train_size = num_rows - val_size
-    train_ds, val_ds = random_split(loader, [train_size, val_size])
-    
-    return train_ds, val_ds
-    """
-    return None, None
+    val_dataset = TensorDataset(x_val, y_val) # tuple(inputs[i], targets[i])
+    val_loader = DataLoader(val_dataset, pin_memory=True, num_workers=4)
+
+    test_dataset = TensorDataset(x_test, y_test) # tuple(inputs[i], targets[i])
+    test_loader = DataLoader(test_dataset, pin_memory=True, num_workers=4)
+
+    return train_loader, val_loader, test_loader
+
 
 def evaluate(model: Mlp, val_loader: torch.Tensor, device:str):
     r"""
@@ -100,30 +105,34 @@ def evaluate(model: Mlp, val_loader: torch.Tensor, device:str):
     return model.validation_epoch_end(outputs)
 
 def fit(epochs:int, model: Mlp, train_loader: torch.Tensor, val_loader: torch.Tensor, 
-        device:str, opt: torch.optim, lr:float=1e-3):
+        device:str, opt: torch.optim, lr:float=0.001):
     r"""
     Training loop for model fitting
     """
     history = []
     losses = []
-    optimizer = opt(model.parameters(), lr)
+    if opt == torch.optim.Adam:
+        optimizer = opt(model.parameters(), lr, amsgrad=True)
+    else:
+        optimizer = opt(model.parameters(), lr)
+
     for epoch in range(epochs):
         # Training Phase 
         for batch in train_loader:
-            loss = model.training_step(batch)
+            loss, accuracy = model.training_step(batch)
             losses.append(loss.cpu().detach().numpy())
             loss.backward()
             optimizer.step()
             optimizer.zero_grad()
         # Validation phase
-        val_loss, val_accuracy = evaluate(model, val_loader, device=device)
-        model.epoch_end(epoch, val_loss, epochs, 200)
+        val_loss, val_error = evaluate(model, val_loader, device=device)
+        model.epoch_end(epoch, val_loss, epochs, 50)
         history.append(val_loss)
 
         # Tracking with wandb
         # TODO: Test evaluation accuracy on Wandb
-        wandb.log({"Evaluation result": val_loss, "Loss": np.mean(losses),
-                   "Evaluation Accuracy": val_accuracy/len(batch)})
+        wandb.log({"Validation loss": val_loss, "Epoch Loss": np.mean(losses),
+                   "Validation Accuracy": 1-val_error})
         losses = []
     
     return history

@@ -1,0 +1,156 @@
+2023-02-18 13:02:39,973 INFO    StreamThr :3947 [internal.py:wandb_internal():87] W&B internal server running at pid: 3947, started at: 2023-02-18 13:02:39.973064
+2023-02-18 13:02:39,975 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: status
+2023-02-18 13:02:39,976 INFO    WriterThread:3947 [datastore.py:open_for_write():85] open: /home/jeffreymo572/Kaggles/wandb/run-20230218_130239-on3euwks/run-on3euwks.wandb
+2023-02-18 13:02:39,976 DEBUG   SenderThread:3947 [sender.py:send():336] send: header
+2023-02-18 13:02:39,982 DEBUG   SenderThread:3947 [sender.py:send():336] send: run
+2023-02-18 13:02:40,798 INFO    SenderThread:3947 [dir_watcher.py:__init__():216] watching files in: /home/jeffreymo572/Kaggles/wandb/run-20230218_130239-on3euwks/files
+2023-02-18 13:02:40,798 INFO    SenderThread:3947 [sender.py:_start_run_threads():1067] run started: on3euwks with start time 1676746959.972325
+2023-02-18 13:02:40,798 DEBUG   SenderThread:3947 [sender.py:send_request():363] send_request: summary_record
+2023-02-18 13:02:40,798 INFO    SenderThread:3947 [sender.py:_save_file():1321] saving file wandb-summary.json with policy end
+2023-02-18 13:02:40,799 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: check_version
+2023-02-18 13:02:40,799 DEBUG   SenderThread:3947 [sender.py:send_request():363] send_request: check_version
+2023-02-18 13:02:41,228 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: run_start
+2023-02-18 13:02:41,246 DEBUG   HandlerThread:3947 [system_info.py:__init__():31] System info init
+2023-02-18 13:02:41,246 DEBUG   HandlerThread:3947 [system_info.py:__init__():46] System info init done
+2023-02-18 13:02:41,246 INFO    HandlerThread:3947 [system_monitor.py:start():151] Starting system monitor
+2023-02-18 13:02:41,247 INFO    SystemMonitor:3947 [system_monitor.py:_start():116] Starting system asset monitoring threads
+2023-02-18 13:02:41,247 INFO    HandlerThread:3947 [system_monitor.py:probe():172] Collecting system info
+2023-02-18 13:02:41,247 INFO    SystemMonitor:3947 [interfaces.py:start():168] Started cpu
+2023-02-18 13:02:41,248 INFO    SystemMonitor:3947 [interfaces.py:start():168] Started disk
+2023-02-18 13:02:41,249 INFO    SystemMonitor:3947 [interfaces.py:start():168] Started gpu
+2023-02-18 13:02:41,250 INFO    SystemMonitor:3947 [interfaces.py:start():168] Started memory
+2023-02-18 13:02:41,250 INFO    SystemMonitor:3947 [interfaces.py:start():168] Started network
+2023-02-18 13:02:41,258 DEBUG   HandlerThread:3947 [system_info.py:probe():195] Probing system
+2023-02-18 13:02:41,313 DEBUG   HandlerThread:3947 [system_info.py:_probe_git():180] Probing git
+2023-02-18 13:02:41,320 DEBUG   HandlerThread:3947 [system_info.py:_probe_git():188] Probing git done
+2023-02-18 13:02:41,320 DEBUG   HandlerThread:3947 [system_info.py:probe():241] Probing system done
+2023-02-18 13:02:41,320 DEBUG   HandlerThread:3947 [system_monitor.py:probe():181] {'os': 'Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-glibc2.17', 'python': '3.8.16', 'heartbeatAt': '2023-02-18T19:02:41.258854', 'startedAt': '2023-02-18T19:02:39.968616', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': 'main.py', 'codePath': 'main.py', 'git': {'remote': 'https://github.com/jeffreymo572/Kaggles.git', 'commit': 'a0cd8bb23fb0060ab4fe283ffb1610fc09f1c40c'}, 'email': 'jeffreymo572@gmail.com', 'root': '/home/jeffreymo572/Kaggles', 'host': 'DESKTOP-NUCQ9A9', 'username': 'jeffreymo572', 'executable': '/home/jeffreymo572/anaconda3/envs/Kaggles/bin/python', 'cpu_count': 8, 'cpu_count_logical': 16, 'cpu_freq': {'current': 3600.0120000000006, 'min': 0.0, 'max': 0.0}, 'cpu_freq_per_core': [{'current': 3600.012, 'min': 0.0, 'max': 0.0}, {'current': 3600.012, 'min': 0.0, 'max': 0.0}, {'current': 3600.012, 'min': 0.0, 'max': 0.0}, {'current': 3600.012, 'min': 0.0, 'max': 0.0}, {'current': 3600.012, 'min': 0.0, 'max': 0.0}, {'current': 3600.012, 'min': 0.0, 'max': 0.0}, {'current': 3600.012, 'min': 0.0, 'max': 0.0}, {'current': 3600.012, 'min': 0.0, 'max': 0.0}, {'current': 3600.012, 'min': 0.0, 'max': 0.0}, {'current': 3600.012, 'min': 0.0, 'max': 0.0}, {'current': 3600.012, 'min': 0.0, 'max': 0.0}, {'current': 3600.012, 'min': 0.0, 'max': 0.0}, {'current': 3600.012, 'min': 0.0, 'max': 0.0}, {'current': 3600.012, 'min': 0.0, 'max': 0.0}, {'current': 3600.012, 'min': 0.0, 'max': 0.0}, {'current': 3600.012, 'min': 0.0, 'max': 0.0}], 'disk': {'total': 250.98248672485352, 'used': 144.22650909423828}, 'gpu': 'NVIDIA GeForce RTX 2080 Ti', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 2080 Ti', 'memory_total': 11811160064}], 'memory': {'total': 7.737171173095703}}
+2023-02-18 13:02:41,320 INFO    HandlerThread:3947 [system_monitor.py:probe():182] Finished collecting system info
+2023-02-18 13:02:41,320 INFO    HandlerThread:3947 [system_monitor.py:probe():185] Publishing system info
+2023-02-18 13:02:41,320 DEBUG   HandlerThread:3947 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-02-18 13:02:41,320 DEBUG   HandlerThread:3947 [system_info.py:_save_pip():67] Saving pip packages done
+2023-02-18 13:02:41,320 DEBUG   HandlerThread:3947 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2023-02-18 13:02:41,799 INFO    Thread-13 :3947 [dir_watcher.py:_on_file_created():275] file/dir created: /home/jeffreymo572/Kaggles/wandb/run-20230218_130239-on3euwks/files/wandb-summary.json
+2023-02-18 13:02:41,799 INFO    Thread-13 :3947 [dir_watcher.py:_on_file_created():275] file/dir created: /home/jeffreymo572/Kaggles/wandb/run-20230218_130239-on3euwks/files/requirements.txt
+2023-02-18 13:02:41,799 INFO    Thread-13 :3947 [dir_watcher.py:_on_file_created():275] file/dir created: /home/jeffreymo572/Kaggles/wandb/run-20230218_130239-on3euwks/files/conda-environment.yaml
+2023-02-18 13:02:47,800 INFO    Thread-13 :3947 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/jeffreymo572/Kaggles/wandb/run-20230218_130239-on3euwks/files/conda-environment.yaml
+2023-02-18 13:02:47,918 DEBUG   HandlerThread:3947 [system_info.py:_save_conda():86] Saving conda packages done
+2023-02-18 13:02:47,919 INFO    HandlerThread:3947 [system_monitor.py:probe():187] Finished publishing system info
+2023-02-18 13:02:47,922 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: status_report
+2023-02-18 13:02:47,923 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: keepalive
+2023-02-18 13:02:47,923 DEBUG   SenderThread:3947 [sender.py:send():336] send: files
+2023-02-18 13:02:47,923 INFO    SenderThread:3947 [sender.py:_save_file():1321] saving file wandb-metadata.json with policy now
+2023-02-18 13:02:47,927 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: stop_status
+2023-02-18 13:02:47,928 DEBUG   SenderThread:3947 [sender.py:send_request():363] send_request: stop_status
+2023-02-18 13:02:48,303 DEBUG   SenderThread:3947 [sender.py:send():336] send: telemetry
+2023-02-18 13:02:48,800 INFO    Thread-13 :3947 [dir_watcher.py:_on_file_created():275] file/dir created: /home/jeffreymo572/Kaggles/wandb/run-20230218_130239-on3euwks/files/wandb-metadata.json
+2023-02-18 13:02:48,861 INFO    wandb-upload_0:3947 [upload_job.py:push():138] Uploaded file /tmp/tmplj42rb4dwandb/we3i0tt3-wandb-metadata.json
+2023-02-18 13:02:50,304 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: status_report
+2023-02-18 13:02:55,305 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: status_report
+2023-02-18 13:03:00,305 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: status_report
+2023-02-18 13:03:02,927 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: keepalive
+2023-02-18 13:03:05,306 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: status_report
+2023-02-18 13:03:07,928 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: keepalive
+2023-02-18 13:03:10,310 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: status_report
+2023-02-18 13:03:10,805 INFO    Thread-13 :3947 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/jeffreymo572/Kaggles/wandb/run-20230218_130239-on3euwks/files/config.yaml
+2023-02-18 13:03:12,930 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: keepalive
+2023-02-18 13:03:15,777 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: status_report
+2023-02-18 13:03:17,930 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: keepalive
+2023-02-18 13:03:20,778 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: status_report
+2023-02-18 13:03:22,931 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: keepalive
+2023-02-18 13:03:25,779 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: status_report
+2023-02-18 13:03:27,932 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: keepalive
+2023-02-18 13:03:30,780 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: status_report
+2023-02-18 13:03:32,933 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: keepalive
+2023-02-18 13:03:33,892 DEBUG   SenderThread:3947 [sender.py:send():336] send: exit
+2023-02-18 13:03:33,892 INFO    SenderThread:3947 [sender.py:send_exit():559] handling exit code: 255
+2023-02-18 13:03:33,892 INFO    SenderThread:3947 [sender.py:send_exit():561] handling runtime: 52
+2023-02-18 13:03:33,893 INFO    SenderThread:3947 [sender.py:_save_file():1321] saving file wandb-summary.json with policy end
+2023-02-18 13:03:33,893 INFO    SenderThread:3947 [sender.py:send_exit():567] send defer
+2023-02-18 13:03:33,893 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: defer
+2023-02-18 13:03:33,893 INFO    HandlerThread:3947 [handler.py:handle_request_defer():170] handle defer: 0
+2023-02-18 13:03:33,893 DEBUG   SenderThread:3947 [sender.py:send_request():363] send_request: defer
+2023-02-18 13:03:33,893 INFO    SenderThread:3947 [sender.py:send_request_defer():583] handle sender defer: 0
+2023-02-18 13:03:33,893 INFO    SenderThread:3947 [sender.py:transition_state():587] send defer: 1
+2023-02-18 13:03:33,894 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: defer
+2023-02-18 13:03:33,894 INFO    HandlerThread:3947 [handler.py:handle_request_defer():170] handle defer: 1
+2023-02-18 13:03:33,894 DEBUG   SenderThread:3947 [sender.py:send_request():363] send_request: defer
+2023-02-18 13:03:33,894 INFO    SenderThread:3947 [sender.py:send_request_defer():583] handle sender defer: 1
+2023-02-18 13:03:33,894 INFO    SenderThread:3947 [sender.py:transition_state():587] send defer: 2
+2023-02-18 13:03:33,894 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: defer
+2023-02-18 13:03:33,894 INFO    HandlerThread:3947 [handler.py:handle_request_defer():170] handle defer: 2
+2023-02-18 13:03:33,894 INFO    HandlerThread:3947 [system_monitor.py:finish():161] Stopping system monitor
+2023-02-18 13:03:33,895 DEBUG   SystemMonitor:3947 [system_monitor.py:_start():130] Starting system metrics aggregation loop
+2023-02-18 13:03:33,896 DEBUG   SystemMonitor:3947 [system_monitor.py:_start():137] Finished system metrics aggregation loop
+2023-02-18 13:03:33,896 DEBUG   SystemMonitor:3947 [system_monitor.py:_start():141] Publishing last batch of metrics
+2023-02-18 13:03:33,896 INFO    HandlerThread:3947 [interfaces.py:finish():175] Joined cpu
+2023-02-18 13:03:33,896 INFO    HandlerThread:3947 [interfaces.py:finish():175] Joined disk
+2023-02-18 13:03:33,902 INFO    HandlerThread:3947 [interfaces.py:finish():175] Joined gpu
+2023-02-18 13:03:33,902 INFO    HandlerThread:3947 [interfaces.py:finish():175] Joined memory
+2023-02-18 13:03:33,902 INFO    HandlerThread:3947 [interfaces.py:finish():175] Joined network
+2023-02-18 13:03:33,902 DEBUG   SenderThread:3947 [sender.py:send_request():363] send_request: defer
+2023-02-18 13:03:33,902 INFO    SenderThread:3947 [sender.py:send_request_defer():583] handle sender defer: 2
+2023-02-18 13:03:33,902 INFO    SenderThread:3947 [sender.py:transition_state():587] send defer: 3
+2023-02-18 13:03:33,903 DEBUG   SenderThread:3947 [sender.py:send():336] send: stats
+2023-02-18 13:03:33,903 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: defer
+2023-02-18 13:03:33,903 INFO    HandlerThread:3947 [handler.py:handle_request_defer():170] handle defer: 3
+2023-02-18 13:03:33,903 DEBUG   SenderThread:3947 [sender.py:send_request():363] send_request: defer
+2023-02-18 13:03:33,903 INFO    SenderThread:3947 [sender.py:send_request_defer():583] handle sender defer: 3
+2023-02-18 13:03:33,903 INFO    SenderThread:3947 [sender.py:transition_state():587] send defer: 4
+2023-02-18 13:03:33,903 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: defer
+2023-02-18 13:03:33,903 INFO    HandlerThread:3947 [handler.py:handle_request_defer():170] handle defer: 4
+2023-02-18 13:03:33,904 DEBUG   SenderThread:3947 [sender.py:send_request():363] send_request: defer
+2023-02-18 13:03:33,904 INFO    SenderThread:3947 [sender.py:send_request_defer():583] handle sender defer: 4
+2023-02-18 13:03:33,904 INFO    SenderThread:3947 [sender.py:transition_state():587] send defer: 5
+2023-02-18 13:03:33,904 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: defer
+2023-02-18 13:03:33,904 INFO    HandlerThread:3947 [handler.py:handle_request_defer():170] handle defer: 5
+2023-02-18 13:03:33,904 DEBUG   SenderThread:3947 [sender.py:send():336] send: summary
+2023-02-18 13:03:33,904 INFO    SenderThread:3947 [sender.py:_save_file():1321] saving file wandb-summary.json with policy end
+2023-02-18 13:03:33,905 DEBUG   SenderThread:3947 [sender.py:send_request():363] send_request: defer
+2023-02-18 13:03:33,905 INFO    SenderThread:3947 [sender.py:send_request_defer():583] handle sender defer: 5
+2023-02-18 13:03:33,905 INFO    SenderThread:3947 [sender.py:transition_state():587] send defer: 6
+2023-02-18 13:03:33,905 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: defer
+2023-02-18 13:03:33,905 INFO    HandlerThread:3947 [handler.py:handle_request_defer():170] handle defer: 6
+2023-02-18 13:03:33,905 DEBUG   SenderThread:3947 [sender.py:send_request():363] send_request: defer
+2023-02-18 13:03:33,905 INFO    SenderThread:3947 [sender.py:send_request_defer():583] handle sender defer: 6
+2023-02-18 13:03:33,905 INFO    SenderThread:3947 [sender.py:transition_state():587] send defer: 7
+2023-02-18 13:03:33,905 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: status_report
+2023-02-18 13:03:33,905 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: defer
+2023-02-18 13:03:33,905 INFO    HandlerThread:3947 [handler.py:handle_request_defer():170] handle defer: 7
+2023-02-18 13:03:33,906 DEBUG   SenderThread:3947 [sender.py:send_request():363] send_request: defer
+2023-02-18 13:03:33,906 INFO    SenderThread:3947 [sender.py:send_request_defer():583] handle sender defer: 7
+2023-02-18 13:03:34,810 INFO    Thread-13 :3947 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/jeffreymo572/Kaggles/wandb/run-20230218_130239-on3euwks/files/wandb-summary.json
+2023-02-18 13:03:34,811 INFO    Thread-13 :3947 [dir_watcher.py:_on_file_created():275] file/dir created: /home/jeffreymo572/Kaggles/wandb/run-20230218_130239-on3euwks/files/output.log
+2023-02-18 13:03:34,892 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: poll_exit
+2023-02-18 13:03:35,896 INFO    SenderThread:3947 [sender.py:transition_state():587] send defer: 8
+2023-02-18 13:03:35,896 DEBUG   SenderThread:3947 [sender.py:send_request():363] send_request: poll_exit
+2023-02-18 13:03:35,897 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: defer
+2023-02-18 13:03:35,897 INFO    HandlerThread:3947 [handler.py:handle_request_defer():170] handle defer: 8
+2023-02-18 13:03:35,897 DEBUG   SenderThread:3947 [sender.py:send_request():363] send_request: defer
+2023-02-18 13:03:35,897 INFO    SenderThread:3947 [sender.py:send_request_defer():583] handle sender defer: 8
+2023-02-18 13:03:35,903 INFO    SenderThread:3947 [sender.py:transition_state():587] send defer: 9
+2023-02-18 13:03:35,904 DEBUG   HandlerThread:3947 [handler.py:handle_request():144] handle_request: defer
+2023-02-18 13:03:35,904 INFO    HandlerThread:3947 [handler.py:handle_request_defer():170] handle defer: 9
+2023-02-18 13:03:35,904 DEBUG   SenderThread:3947 [sender.py:send():336] send: artifact
+2023-02-18 13:03:36,811 INFO    Thread-13 :3947 [dir_watcher.py:_on_file_modified():292] file/dir modified: /home/jeffreymo572/Kaggles/wandb/run-20230218_130239-on3euwks/files/output.log
+2023-02-18 13:03:37,036 WARNING StreamThr :3947 [internal.py:is_dead():415] Internal process exiting, parent pid 3902 disappeared
+2023-02-18 13:03:37,036 ERROR   StreamThr :3947 [internal.py:wandb_internal():153] Internal process shutdown.
+2023-02-18 13:03:37,904 INFO    HandlerThread:3947 [handler.py:finish():841] shutting down handler
+2023-02-18 13:03:37,904 INFO    WriterThread:3947 [datastore.py:close():299] close: /home/jeffreymo572/Kaggles/wandb/run-20230218_130239-on3euwks/run-on3euwks.wandb
+2023-02-18 13:03:37,953 INFO    SenderThread:3947 [sender.py:send_artifact():1417] sent artifact job-https___github.com_jeffreymo572_Kaggles.git_main.py - {'id': 'QXJ0aWZhY3Q6MzczNDQxOTk2', 'digest': '0c2a0ae8351ded94f4506d2ce9c6d82f', 'state': 'COMMITTED', 'aliases': [{'artifactCollectionName': 'job-https___github.com_jeffreymo572_Kaggles.git_main.py', 'alias': 'latest'}, {'artifactCollectionName': 'job-https___github.com_jeffreymo572_Kaggles.git_main.py', 'alias': 'v2'}], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjUzNDY5NTQ4', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6MzczNDgxMDk0', 'versionIndex': 4}}, 'version': 'v2'}
+2023-02-18 13:03:37,953 INFO    SenderThread:3947 [sender.py:finish():1493] shutting down sender
+2023-02-18 13:03:37,953 INFO    SenderThread:3947 [dir_watcher.py:finish():362] shutting down directory watcher
+2023-02-18 13:03:38,812 INFO    SenderThread:3947 [dir_watcher.py:finish():392] scan: /home/jeffreymo572/Kaggles/wandb/run-20230218_130239-on3euwks/files
+2023-02-18 13:03:38,812 INFO    SenderThread:3947 [dir_watcher.py:finish():406] scan save: /home/jeffreymo572/Kaggles/wandb/run-20230218_130239-on3euwks/files/output.log output.log
+2023-02-18 13:03:38,812 INFO    SenderThread:3947 [dir_watcher.py:finish():406] scan save: /home/jeffreymo572/Kaggles/wandb/run-20230218_130239-on3euwks/files/conda-environment.yaml conda-environment.yaml
+2023-02-18 13:03:38,814 INFO    SenderThread:3947 [dir_watcher.py:finish():406] scan save: /home/jeffreymo572/Kaggles/wandb/run-20230218_130239-on3euwks/files/config.yaml config.yaml
+2023-02-18 13:03:38,814 INFO    SenderThread:3947 [dir_watcher.py:finish():406] scan save: /home/jeffreymo572/Kaggles/wandb/run-20230218_130239-on3euwks/files/wandb-metadata.json wandb-metadata.json
+2023-02-18 13:03:38,814 INFO    SenderThread:3947 [dir_watcher.py:finish():406] scan save: /home/jeffreymo572/Kaggles/wandb/run-20230218_130239-on3euwks/files/requirements.txt requirements.txt
+2023-02-18 13:03:38,814 INFO    SenderThread:3947 [dir_watcher.py:finish():406] scan save: /home/jeffreymo572/Kaggles/wandb/run-20230218_130239-on3euwks/files/wandb-summary.json wandb-summary.json
+2023-02-18 13:03:38,814 INFO    SenderThread:3947 [file_pusher.py:finish():162] shutting down file pusher
+2023-02-18 13:03:38,814 INFO    SenderThread:3947 [file_pusher.py:join():167] waiting for file pusher
+2023-02-18 13:03:39,505 INFO    wandb-upload_1:3947 [upload_job.py:push():138] Uploaded file /home/jeffreymo572/Kaggles/wandb/run-20230218_130239-on3euwks/files/conda-environment.yaml
+2023-02-18 13:03:39,725 INFO    wandb-upload_3:3947 [upload_job.py:push():138] Uploaded file /home/jeffreymo572/Kaggles/wandb/run-20230218_130239-on3euwks/files/requirements.txt
+2023-02-18 13:03:39,734 INFO    wandb-upload_4:3947 [upload_job.py:push():138] Uploaded file /home/jeffreymo572/Kaggles/wandb/run-20230218_130239-on3euwks/files/wandb-summary.json
+2023-02-18 13:03:39,738 INFO    wandb-upload_0:3947 [upload_job.py:push():138] Uploaded file /home/jeffreymo572/Kaggles/wandb/run-20230218_130239-on3euwks/files/output.log
+2023-02-18 13:03:39,871 INFO    wandb-upload_2:3947 [upload_job.py:push():138] Uploaded file /home/jeffreymo572/Kaggles/wandb/run-20230218_130239-on3euwks/files/config.yaml
