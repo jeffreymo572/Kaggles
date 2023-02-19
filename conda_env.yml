@@ -12,7 +12,6 @@ dependencies:
   - matplotlib
   - seaborn
   - scikit-learn
-  - nvidia-apex
   - pip:
     - 'mujoco-py<2.2,>=2.1'
     - torchsde
