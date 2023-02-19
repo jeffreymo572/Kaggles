@@ -7,10 +7,8 @@ dependencies:
   - cudatoolkit=10.2
   - scipy
   - pytorch=1.12
-  - torchvision=0.13.0
   - shapely
   - ipykernel
-  - wandb
   - matplotlib
   - seaborn
   - scikit-learn
@@ -20,3 +18,4 @@ dependencies:
     - torchsde
     - opencv-python
     - torchdiffeq
+    - wandb
