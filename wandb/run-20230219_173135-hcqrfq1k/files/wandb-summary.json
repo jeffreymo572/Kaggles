@@ -1,1 +1,1 @@
-{"Validation loss": 0.16908368468284607, "Epoch Loss": 0.1768237054347992, "Validation Accuracy": 0.35656630992889404, "_timestamp": 1676850902.4913144, "_runtime": 1407.0373895168304, "_step": 9}
+{"Validation loss": 0.1678593009710312, "Epoch Loss": 0.16971233487129211, "Validation Accuracy": 0.3515326976776123, "_timestamp": 1676876772.4308636, "_runtime": 27276.976938724518, "_step": 152, "_wandb": {"runtime": 27364}}

@@ -35,7 +35,7 @@ input_dim = df.shape[1]-1
 train_ds, val_ds, test_ds = create_dataset(df, 'booking_status')
 
 # Model and hyperparams
-net = Mlp(input_dim = input_dim, output_dim = 1, layer_dims=[128, 16, 64], device=device)
+net = Mlp(input_dim = input_dim, output_dim = 1, layer_dims=[128, 128, 128, 128, 128], device=device)
 net = net.to(device)
 optimizer = torch.optim.Adam
 

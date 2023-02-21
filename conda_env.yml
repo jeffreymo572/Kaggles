@@ -13,7 +13,6 @@ dependencies:
   - seaborn
   - scikit-learn
   - pip:
-    - 'mujoco-py<2.2,>=2.1'
     - torchsde
     - opencv-python
     - torchdiffeq
