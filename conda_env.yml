@@ -6,6 +6,7 @@ dependencies:
   - pip
   - cudatoolkit=10.2
   - scipy
+  - jupyter
   - pytorch=1.12
   - shapely
   - ipykernel
@@ -17,3 +18,4 @@ dependencies:
     - opencv-python
     - torchdiffeq
     - wandb
+    - holidays

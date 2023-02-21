@@ -12,6 +12,7 @@ import torch.nn.functional as F
 
 from common.NeuralNets import Mlp
 from common.utils import create_dataset, fit, evaluate
+from common.data_cleaner import clean_s3e7
 
 # Cuda for GPU 
 if torch.cuda.is_available(): 
@@ -24,10 +25,12 @@ device = torch.device(dev)
 df = pd.read_csv('data/S3E7/train.csv')
 
 # Reduce dataset for training
-# reduction = int(0.2*df.shape[0])
-# df = resample(df, n_samples=reduction)
+reduction = int(0.2*df.shape[0])
+df = resample(df, n_samples=reduction)
+
 # Cleaning data
-df = df.drop(['id'], axis=1) # Drop id
+df = clean_s3e7(df)
+
 # TODO: See data visualization ipynb
 input_dim = df.shape[1]-1
 
@@ -35,6 +38,7 @@ input_dim = df.shape[1]-1
 train_ds, val_ds, test_ds = create_dataset(df, 'booking_status')
 
 # Model and hyperparams
+# TODO: Change input_dim to 1?
 net = Mlp(input_dim = input_dim, output_dim = 1, layer_dims=[128, 128, 128, 128, 128], device=device)
 net = net.to(device)
 optimizer = torch.optim.Adam
