@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "main.py", line 40, in <module>
-    history = fit(epochs, net, train_ds, val_ds, device, opt = optimizer)
-  File "/home/jeffreymo572/Kaggles/common/utils.py", line 121, in fit
-    optimizer.zero_grad()
-  File "/home/jeffreymo572/anaconda3/envs/Kaggles/lib/python3.8/site-packages/torch/optim/optimizer.py", line 279, in zero_grad
-    p.grad.zero_()
-KeyboardInterrupt
