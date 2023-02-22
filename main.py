@@ -15,6 +15,7 @@ from common.utils import create_dataset, fit, evaluate
 from common.data_cleaner import clean_s3e7
 
 # Cuda for GPU 
+
 if torch.cuda.is_available(): 
  dev = "cuda:0" 
 else: 
@@ -38,11 +39,11 @@ input_dim = df.shape[1]-1
 train_ds, val_ds, test_ds = create_dataset(df, 'booking_status')
 
 # Model and hyperparams
-net = Mlp(input_dim = input_dim, output_dim = 1, layer_dims=[128, 128, 128, 128, 128], device=device)
+net = Mlp(input_dim = input_dim, output_dim = 1, layer_dims=[32, 32], device=device)
 net = net.to(device)
 optimizer = torch.optim.SGD
 
 # Training
-epochs = 100
+epochs = 700
 history = fit(epochs, net, train_ds, val_ds, device, opt = optimizer)
 val_loss = evaluate(net, val_ds, device)

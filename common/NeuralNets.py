@@ -110,10 +110,10 @@ class Mlp(nn.Module):
         # Generate predictions
         out = self(inputs).to(self.device)
         # Calcuate loss
-        loss = F.mse_loss(out, targets)
+        loss = F.binary_cross_entropy_with_logits(out, targets.reshape(-1,1))
         accuracy = 1-torch.absolute(torch.Tensor(out-targets))
-
         return loss, accuracy
+
     def validation_step(self, batch: tuple)-> dict:
         r"""
         Model prediction for validation batch
@@ -130,11 +130,12 @@ class Mlp(nn.Module):
         # Generate predictions
         out = self(inputs)
         # Calculate loss
-        loss = F.mse_loss(out, targets) # Similar to accuracy
+        loss = F.binary_cross_entropy_with_logits(out, targets) # Similar to accuracy
         # Generate accuracy
-        error = torch.absolute(targets-out) # <20% margin of error
+        error = F.l1_loss(out, targets)
+        correct = 1 if out == targets else 0
 
-        return {'val_loss': loss.detach(), 'accuracy': 1-error}
+        return {'val_loss': loss.detach(), 'accuracy': 1-error.detach(), 'correct': correct}
 
     def validation_epoch_end(self, outputs:dict)->float:
         r"""
@@ -151,11 +152,13 @@ class Mlp(nn.Module):
         """
         batch_losses = [x['val_loss'] for x in outputs]
         batch_accuracy = [a['accuracy'] for a in outputs]
+        batch_correctness = [c['correct'] for c in outputs]
 
         epoch_loss = torch.stack(batch_losses).mean()
-        accuracy = torch.mean(torch.Tensor(batch_accuracy))
+        accuracy = torch.stack(batch_accuracy).mean()
+        correctness = np.array(batch_correctness).mean()
 
-        return epoch_loss.item(), accuracy.item()
+        return epoch_loss.item(), accuracy.item(), correctness
     
     def epoch_end(self, epoch:int, val_loss:float, num_epochs:int, n:int):
         r"""

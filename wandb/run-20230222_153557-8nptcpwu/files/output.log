@@ -1,0 +1,24 @@
+
+Epoch [50], val_loss: 0.6759
+Epoch [100], val_loss: 0.6660
+Epoch [150], val_loss: 0.6660
+Traceback (most recent call last):
+  File "main.py", line 48, in <module>
+    history = fit(epochs, net, train_ds, val_ds, device, opt = optimizer)
+  File "/home/jeffreymo572/Kaggles/common/utils.py", line 121, in fit
+    loss, accuracy = model.training_step(batch)
+  File "/home/jeffreymo572/Kaggles/common/NeuralNets.py", line 111, in training_step
+    out = self(inputs).to(self.device)
+  File "/home/jeffreymo572/anaconda3/envs/Kaggles/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/jeffreymo572/Kaggles/common/NeuralNets.py", line 95, in forward
+    return self.net(x)
+  File "/home/jeffreymo572/anaconda3/envs/Kaggles/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/jeffreymo572/anaconda3/envs/Kaggles/lib/python3.8/site-packages/torch/nn/modules/container.py", line 204, in forward
+    input = module(input)
+  File "/home/jeffreymo572/anaconda3/envs/Kaggles/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/jeffreymo572/anaconda3/envs/Kaggles/lib/python3.8/site-packages/torch/nn/modules/linear.py", line 114, in forward
+    return F.linear(input, self.weight, self.bias)
+KeyboardInterrupt

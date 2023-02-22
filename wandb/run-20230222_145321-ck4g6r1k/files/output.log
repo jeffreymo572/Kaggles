@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "main.py", line 48, in <module>
+    history = fit(epochs, net, train_ds, val_ds, device, opt = optimizer)
+  File "/home/jeffreymo572/Kaggles/common/utils.py", line 127, in fit
+    val_loss, val_error = evaluate(model, val_loader, device=device)
+  File "/home/jeffreymo572/Kaggles/common/utils.py", line 105, in evaluate
+    outputs.append(model.validation_step((x,y)))
+  File "/home/jeffreymo572/Kaggles/common/NeuralNets.py", line 135, in validation_step
+    acc = (out.reshape(-1).cpu().numpy().round() == targets).mean()
+RuntimeError: Can't call numpy() on Tensor that requires grad. Use tensor.detach().numpy() instead.

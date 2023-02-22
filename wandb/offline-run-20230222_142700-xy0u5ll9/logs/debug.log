@@ -1,0 +1,22 @@
+2023-02-22 14:27:00,726 INFO    MainThread:10148 [wandb_setup.py:_flush():68] Configure stats pid to 10148
+2023-02-22 14:27:00,726 INFO    MainThread:10148 [wandb_setup.py:_flush():68] Loading settings from /home/jeffreymo572/.config/wandb/settings
+2023-02-22 14:27:00,726 INFO    MainThread:10148 [wandb_setup.py:_flush():68] Loading settings from /home/jeffreymo572/Kaggles/wandb/settings
+2023-02-22 14:27:00,726 INFO    MainThread:10148 [wandb_setup.py:_flush():68] Loading settings from environment variables: {'_require_service': 'True'}
+2023-02-22 14:27:00,726 INFO    MainThread:10148 [wandb_setup.py:_flush():68] Inferring run settings from compute environment: {'program_relpath': 'main.py', 'program': 'main.py'}
+2023-02-22 14:27:00,726 INFO    MainThread:10148 [wandb_init.py:_log_setup():492] Logging user logs to /home/jeffreymo572/Kaggles/wandb/offline-run-20230222_142700-xy0u5ll9/logs/debug.log
+2023-02-22 14:27:00,726 INFO    MainThread:10148 [wandb_init.py:_log_setup():493] Logging internal logs to /home/jeffreymo572/Kaggles/wandb/offline-run-20230222_142700-xy0u5ll9/logs/debug-internal.log
+2023-02-22 14:27:00,726 INFO    MainThread:10148 [wandb_init.py:init():532] calling init triggers
+2023-02-22 14:27:00,726 INFO    MainThread:10148 [wandb_init.py:init():538] wandb.init called with sweep_config: {}
+config: {'learning_rate': 0.001, 'architecture': 'MLP[18,128,16,64,1]', 'dataset': 'Kaggle S3E7', 'epochs': 1000, 'data cleaning': 'None', 'optimizer': 'Adam'}
+2023-02-22 14:27:00,726 INFO    MainThread:10148 [wandb_init.py:init():588] starting backend
+2023-02-22 14:27:00,726 INFO    MainThread:10148 [wandb_init.py:init():592] setting up manager
+2023-02-22 14:27:00,728 INFO    MainThread:10148 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2023-02-22 14:27:00,730 INFO    MainThread:10148 [wandb_init.py:init():599] backend started and connected
+2023-02-22 14:27:00,732 INFO    MainThread:10148 [wandb_init.py:init():687] updated telemetry
+2023-02-22 14:27:00,741 INFO    MainThread:10148 [wandb_init.py:init():775] starting run threads in backend
+2023-02-22 14:27:09,495 INFO    MainThread:10148 [wandb_run.py:_console_start():2114] atexit reg
+2023-02-22 14:27:09,495 INFO    MainThread:10148 [wandb_run.py:_redirect():1969] redirect: SettingsConsole.WRAP_RAW
+2023-02-22 14:27:09,495 INFO    MainThread:10148 [wandb_run.py:_redirect():2034] Wrapping output streams.
+2023-02-22 14:27:09,495 INFO    MainThread:10148 [wandb_run.py:_redirect():2059] Redirects installed.
+2023-02-22 14:27:09,496 INFO    MainThread:10148 [wandb_init.py:init():817] run started, returning control to user process
+2023-02-22 14:27:13,153 WARNING MsgRouterThr:10148 [router.py:message_loop():77] message_loop has been closed

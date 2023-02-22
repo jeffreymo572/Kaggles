@@ -1,0 +1,125 @@
+{
+    "os": "Linux-5.10.16.3-microsoft-standard-WSL2-x86_64-with-glibc2.17",
+    "python": "3.8.16",
+    "heartbeatAt": "2023-02-22T20:27:00.847406",
+    "startedAt": "2023-02-22T20:27:00.724525",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "main.py",
+    "codePath": "main.py",
+    "git": {
+        "remote": "https://github.com/jeffreymo572/Kaggles.git",
+        "commit": "10306bedf4e093b4f99c03565014a4b26cfb748c"
+    },
+    "email": "jeffreymo572@gmail.com",
+    "root": "/home/jeffreymo572/Kaggles",
+    "host": "DESKTOP-NUCQ9A9",
+    "username": "jeffreymo572",
+    "executable": "/home/jeffreymo572/anaconda3/envs/Kaggles/bin/python",
+    "cpu_count": 8,
+    "cpu_count_logical": 16,
+    "cpu_freq": {
+        "current": 3600.008000000001,
+        "min": 0.0,
+        "max": 0.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3600.008,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3600.008,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3600.008,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3600.008,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3600.008,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3600.008,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3600.008,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3600.008,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3600.008,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3600.008,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3600.008,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3600.008,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3600.008,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3600.008,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3600.008,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3600.008,
+            "min": 0.0,
+            "max": 0.0
+        }
+    ],
+    "disk": {
+        "total": 250.98248672485352,
+        "used": 144.36806106567383
+    },
+    "gpu": "NVIDIA GeForce RTX 2080 Ti",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 2080 Ti",
+            "memory_total": 11811160064
+        }
+    ],
+    "memory": {
+        "total": 7.737171173095703
+    }
+}

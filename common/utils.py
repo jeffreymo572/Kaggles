@@ -124,14 +124,14 @@ def fit(epochs:int, model: Mlp, train_loader: torch.Tensor, val_loader: torch.Te
             optimizer.step()
             optimizer.zero_grad()
         # Validation phase
-        val_loss, val_error = evaluate(model, val_loader, device=device)
+        val_loss, val_error, val_correct = evaluate(model, val_loader, device=device)
         model.epoch_end(epoch, val_loss, epochs, 50)
         history.append(val_loss)
 
         # Tracking with wandb
         # TODO: Test evaluation accuracy on Wandb
         wandb.log({"Validation loss": val_loss, "Epoch Loss": np.mean(losses),
-                   "Validation Accuracy": 1-val_error})
+                   "Validation Accuracy": val_error, "Correct Ratio": val_correct})
         losses = []
     
     return history
