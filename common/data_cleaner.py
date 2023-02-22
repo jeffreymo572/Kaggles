@@ -33,7 +33,6 @@ def isHoliday(df: pd.DataFrame)->pd.DataFrame:
 
     return df_cleaned
 
-
 def clean_s3e7(df: pd.DataFrame)->pd.DataFrame:
     r"""
     Data preprocessor for Kaggle s3e7. 
