@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "main.py", line 47, in <module>
+    history = fit(epochs, net, train_ds, val_ds, device, opt = optimizer)
+  File "/home/jeffreymo572/Kaggles/common/utils.py", line 123, in fit
+    loss, accuracy = model.training_step(batch)
+  File "/home/jeffreymo572/Kaggles/common/NeuralNets.py", line 115, in training_step
+    loss = F.binary_cross_entropy(out, targets)
+  File "/home/jeffreymo572/anaconda3/envs/Kaggles/lib/python3.8/site-packages/torch/nn/functional.py", line 3086, in binary_cross_entropy
+    raise ValueError(
+ValueError: Using a target size (torch.Size([1, 1])) that is different to the input size (torch.Size([1, 2])) is deprecated. Please ensure they have the same size.

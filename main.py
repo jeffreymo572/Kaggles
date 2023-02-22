@@ -38,12 +38,11 @@ input_dim = df.shape[1]-1
 train_ds, val_ds, test_ds = create_dataset(df, 'booking_status')
 
 # Model and hyperparams
-# TODO: Change input_dim to 1?
 net = Mlp(input_dim = input_dim, output_dim = 1, layer_dims=[128, 128, 128, 128, 128], device=device)
 net = net.to(device)
-optimizer = torch.optim.Adam
+optimizer = torch.optim.SGD
 
 # Training
-epochs = 1000
+epochs = 100
 history = fit(epochs, net, train_ds, val_ds, device, opt = optimizer)
 val_loss = evaluate(net, val_ds, device)

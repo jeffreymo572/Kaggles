@@ -36,6 +36,7 @@ def dataframe_to_arrays(dataframe: pd.DataFrame, target_col_name: str):
         target_array(np.array[N,1]): Numpy array of target data
     """
     # TODO: Split target array with col name, current only uses last column
+
     # Make a copy of the original dataframe
     dataframe1 = dataframe.copy(deep=True)
     # Extract input & outupts as numpy arrays
@@ -105,16 +106,14 @@ def evaluate(model: Mlp, val_loader: torch.Tensor, device:str):
     return model.validation_epoch_end(outputs)
 
 def fit(epochs:int, model: Mlp, train_loader: torch.Tensor, val_loader: torch.Tensor, 
-        device:str, opt: torch.optim, lr:float=0.001):
+        device:str, opt: torch.optim, lr:float=0.01):
     r"""
     Training loop for model fitting
     """
     history = []
     losses = []
-    if opt == torch.optim.Adam:
-        optimizer = opt(model.parameters(), lr, amsgrad=True)
-    else:
-        optimizer = opt(model.parameters(), lr)
+    
+    optimizer = opt(model.parameters(), lr, weight_decay=0.0005)
 
     for epoch in range(epochs):
         # Training Phase 

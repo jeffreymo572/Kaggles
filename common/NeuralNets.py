@@ -63,7 +63,7 @@ class Mlp(nn.Module):
         layer_dims (List[int]): Dimensions of hidden layers
         activation (str): type of activations. Not applying to the last layer 
     """
-    def __init__(self, input_dim, output_dim, device, layer_dims=[], activation='Sigmoid'):
+    def __init__(self, input_dim, output_dim, device, layer_dims=[], activation='swish'):
         super(Mlp, self).__init__()
 
         self.device = device
@@ -79,13 +79,11 @@ class Mlp(nn.Module):
                   self.layers.append(nn.ReLU())
                 elif activation == 'sigmoid':
                   self.layers.append(nn.Sigmoid())
+                elif activation == 'swish':
+                  self.layers.append(nn.SELU())
                 self.layers.append(nn.Linear(layer_dims[i], layer_dims[i+1]))
 
-            if activation == 'relu':
-              self.layers.append(nn.ReLU())
-            if activation == 'sigmoid':
-              self.layers.append(nn.Sigmoid())
-
+            self.layers.append(nn.Sigmoid())
             self.layers.append(nn.Linear(layer_dims[-1], output_dim))
 
         else:

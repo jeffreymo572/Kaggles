@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "main.py", line 47, in <module>
+    history = fit(epochs, net, train_ds, val_ds, device, opt = optimizer)
+  File "/home/jeffreymo572/Kaggles/common/utils.py", line 116, in fit
+    optimizer = opt(model.parameters(), lr, amsgrad=True, weight_decay=0.0005)
+TypeError: __init__() got an unexpected keyword argument 'amsgrad'
