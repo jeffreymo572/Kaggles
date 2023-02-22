@@ -1,13 +1,9 @@
 import pandas as pd
-import holidays
+from pandas.tseries.holiday import USFederalHolidayCalendar as calendar
 
 # Feature engineer/clean data
 def add_column(df, col):
     pass
-
-def is_holiday(month:str, day:str, year:str)->bool:
-    us_holidays = holidays.UnitedStates()
-
 
 def clean_s3e7(df: pd.DataFrame)-> pd.DataFrame:
     r"""
@@ -20,17 +16,17 @@ def clean_s3e7(df: pd.DataFrame)-> pd.DataFrame:
         df_cleaned: Clean data frame
     """
     # Holiday checker
-    month = df['month']
-    year = df['year']
-    day = df['date']
-    us_holidays = holidays.UnitedStates()
+    dt = pd.to_datetime(dict(year=df.year, month=df.month, day=df.date), errors='coerce')
+    dt.columns = ['is_holiday']
+    df_cleaned = pd.concat([df, dt], axis=1)
+    holiday_range = pd.date_range(start='2015-07-01', end='2015-07-31')
+    df['is_holiday'] = 
 
     # Drops
     df_cleaned = df.drop(['id'], axis=1) # id
 
     # Additions
     df['cancel_ratio'] = df['num_prev_cancellations']/(df['num_prev_cancellations']+df['num_prev_not_cancelled'])
-    df['is_holiday'] = f"{year}-{month}-{day}" in us_holidays # TODO
 
     # Normalizing
     df['num_adults'] = df["num_adults"]/max(df['num_adults'])
