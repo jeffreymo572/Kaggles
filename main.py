@@ -23,7 +23,7 @@ else:
 device = torch.device(dev) 
 
 # Data preprocessing
-df = pd.read_csv('data/S3E7/train.csv')
+df = pd.read_csv('data/S3E10/train.csv')
 
 # Reduce dataset for training
 reduction = int(0.2*df.shape[0])
